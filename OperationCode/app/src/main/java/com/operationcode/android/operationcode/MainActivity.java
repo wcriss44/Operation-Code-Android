@@ -1,8 +1,10 @@
 package com.operationcode.android.operationcode;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,8 +15,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.operationcode.android.operationcode.fragments.Events;
+import com.operationcode.android.operationcode.fragments.MeetUps;
+import com.operationcode.android.operationcode.fragments.Nearby;
+import com.operationcode.android.operationcode.fragments.Scholarships;
+
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, Events.OnFragmentInteractionListener,
+        Nearby.OnFragmentInteractionListener, MeetUps.OnFragmentInteractionListener, Scholarships.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,22 +88,47 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_events) {
+            setTitle("Events");
+            Events events = new Events();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame, events, "Event Fragment");
+            fragmentTransaction.commit();
+        } else if (id == R.id.nav_meetups) {
+            setTitle("Meet-Ups");
+            MeetUps meetUps = new MeetUps();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame, meetUps, "Meet-Ups Fragment");
+            fragmentTransaction.commit();
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_scholarships) {
+            setTitle("Scholarships");
+            Scholarships scholarships = new Scholarships();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame, scholarships, "Scholarships Fragment");
+            fragmentTransaction.commit();
 
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_nearby) {
+            setTitle("Nearby");
+            Nearby nearby = new Nearby();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame, nearby, "Nearby Fragment");
+            fragmentTransaction.commit();
 
         }
+        //These are left for test / later implementation
+//        else if (id == R.id.nav_share) {
+//
+//        } else if (id == R.id.nav_send) {
+//
+//        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    //Needed for override
+    @Override
+    public void onFragmentInteraction(Uri uri){
     }
 }

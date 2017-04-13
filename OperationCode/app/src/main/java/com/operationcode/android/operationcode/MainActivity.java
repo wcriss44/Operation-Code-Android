@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.operationcode.android.operationcode.fragments.Events;
 import com.operationcode.android.operationcode.fragments.MeetUps;
 import com.operationcode.android.operationcode.fragments.Nearby;
@@ -23,7 +24,6 @@ import com.operationcode.android.operationcode.fragments.Scholarships;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, Events.OnFragmentInteractionListener,
         Nearby.OnFragmentInteractionListener, MeetUps.OnFragmentInteractionListener, Scholarships.OnFragmentInteractionListener{
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +48,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
+        FirebaseMessaging.getInstance().subscribeToTopic("Scholarships");
     }
 
     @Override

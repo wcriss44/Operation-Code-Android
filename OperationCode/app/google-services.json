@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "852053069505",
+    "firebase_url": "https://operationcode-98ec4.firebaseio.com",
+    "project_id": "operationcode-98ec4",
+    "storage_bucket": "operationcode-98ec4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852053069505:android:43997242776fd1d1",
+        "android_client_info": {
+          "package_name": "com.operationcode.android.operationcode"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852053069505-89h890utjsmddm29jto8ts0qsi7akspp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBorTs5tzjT-Aok4zRLds_5ZHG5I0XTPco"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

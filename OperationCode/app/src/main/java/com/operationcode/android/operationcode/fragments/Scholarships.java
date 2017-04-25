@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.operationcode.android.operationcode.R;
+import com.operationcode.android.operationcode.services.OpCodeApi;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +27,7 @@ public class Scholarships extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final OpCodeApi opCodeApi = new OpCodeApi();
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -59,6 +62,7 @@ public class Scholarships extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        items = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -71,7 +75,10 @@ public class Scholarships extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_scholarships, container, false);
         list = (ListView) view.findViewById(R.id.scholarshipList);
-        items = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+        list.setAdapter(items);
+
+
+        opCodeApi.getScholarships(items);
         return view;
     }
 

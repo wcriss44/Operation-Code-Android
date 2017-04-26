@@ -10,11 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.android.volley.toolbox.Volley;
 import com.operationcode.android.operationcode.R;
 import com.operationcode.android.operationcode.services.OpCodeApi;
 
-import org.json.JSONObject;
 
 /**
  * A simple {@link Fragment} subclass.

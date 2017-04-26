@@ -12,8 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.operationcode.android.operationcode.fragments.Bootcamps;
 import com.operationcode.android.operationcode.fragments.Events;
@@ -23,22 +21,12 @@ import com.operationcode.android.operationcode.fragments.Scholarships;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, Events.OnFragmentInteractionListener,
         Nearby.OnFragmentInteractionListener, Bootcamps.OnFragmentInteractionListener, Scholarships.OnFragmentInteractionListener{
-    //RequestQueue queue = Volley.newRequestQueue(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

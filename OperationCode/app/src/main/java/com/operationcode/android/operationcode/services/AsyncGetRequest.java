@@ -17,7 +17,7 @@ import java.net.URL;
  * Created by willc on 4/25/17.
  */
 
-public class GetMethodDemo extends AsyncTask<String , Void ,String> {
+public class AsyncGetRequest extends AsyncTask<String , Void ,String> {
     String server_response;
 
     @Override

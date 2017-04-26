@@ -1,24 +1,11 @@
 package com.operationcode.android.operationcode.services;
 
-import android.util.Log;
 import android.widget.ArrayAdapter;
-import android.widget.ExpandableListAdapter;
 
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.operationcode.android.operationcode.fragments.Bootcamps;
 
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 public class OpCodeApi {
     //private final String SCHOLARSHIP_URL = "";
@@ -43,7 +30,7 @@ public class OpCodeApi {
     }
     public void getBootcamps(ArrayAdapter<String> items){
 
-        new GetMethodDemo().execute(CODE_SCHOOL_URL);
+        new AsyncGetRequest().execute(CODE_SCHOOL_URL);
         if (Bootcamps.bootcamps != null){
             try {
                 JSONObject json = new JSONObject(Bootcamps.bootcamps);

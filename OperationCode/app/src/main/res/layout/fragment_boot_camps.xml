@@ -2,12 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.operationcode.android.operationcode.fragments.MeetUps">
+    tools:context="com.operationcode.android.operationcode.fragments.Bootcamps">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="hello_meetup_fragment" />
+        android:text="hello_bootcamp fragment" />
 
 </FrameLayout>

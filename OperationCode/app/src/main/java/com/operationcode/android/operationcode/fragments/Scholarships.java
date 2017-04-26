@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.operationcode.android.operationcode.R;
 import com.operationcode.android.operationcode.services.OpCodeApi;
 
@@ -30,6 +32,7 @@ public class Scholarships extends Fragment {
     private static final OpCodeApi opCodeApi = new OpCodeApi();
 
     // TODO: Rename and change types of parameters
+    RequestQueue queue;
     private String mParam1;
     private String mParam2;
     ArrayAdapter<String> items;
@@ -76,9 +79,11 @@ public class Scholarships extends Fragment {
         View view = inflater.inflate(R.layout.fragment_scholarships, container, false);
         list = (ListView) view.findViewById(R.id.scholarshipList);
         list.setAdapter(items);
+        queue = Volley.newRequestQueue(this.getActivity());
 
 
         opCodeApi.getScholarships(items);
+        opCodeApi.getBootcamps(items, queue);
         return view;
     }
 

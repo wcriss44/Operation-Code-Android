@@ -2,10 +2,7 @@ package com.operationcode.android.operationcode;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,15 +12,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.operationcode.android.operationcode.fragments.Bootcamps;
 import com.operationcode.android.operationcode.fragments.Events;
-import com.operationcode.android.operationcode.fragments.MeetUps;
 import com.operationcode.android.operationcode.fragments.Nearby;
 import com.operationcode.android.operationcode.fragments.Scholarships;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, Events.OnFragmentInteractionListener,
-        Nearby.OnFragmentInteractionListener, MeetUps.OnFragmentInteractionListener, Scholarships.OnFragmentInteractionListener{
+        Nearby.OnFragmentInteractionListener, Bootcamps.OnFragmentInteractionListener, Scholarships.OnFragmentInteractionListener{
+    //RequestQueue queue = Volley.newRequestQueue(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,11 +95,11 @@ public class MainActivity extends AppCompatActivity
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame, events, "Event Fragment");
             fragmentTransaction.commit();
-        } else if (id == R.id.nav_meetups) {
-            setTitle("Meet-Ups");
-            MeetUps meetUps = new MeetUps();
+        } else if (id == R.id.nav_bootcamps) {
+            setTitle("Bootcamps");
+            Bootcamps bootcamps = new Bootcamps();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.frame, meetUps, "Meet-Ups Fragment");
+            fragmentTransaction.replace(R.id.frame, bootcamps, "Bootcamps Fragment");
             fragmentTransaction.commit();
 
         } else if (id == R.id.nav_scholarships) {

@@ -11,6 +11,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.operationcode.android.operationcode.fragments.Bootcamps;
 
 import org.json.JSONObject;
 
@@ -40,37 +41,24 @@ public class OpCodeApi {
             items.add(scholarships[i]);
         }
     }
-    public void getBootcamps(ArrayAdapter<String> items, RequestQueue queue){
-        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, CODE_SCHOOL_URL, null,
-                new Response.Listener<JSONObject>()
-                {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        // display response
-                        System.out.println("made it to response");
-                        try {
-                            for (int i = 0; i < response.getJSONArray("va_approved").length(); i++) {
-                                JSONObject object = (JSONObject) response.getJSONArray("va_approved").get(i);
+    public void getBootcamps(ArrayAdapter<String> items){
 
-                            }
-
-                        } catch (Exception e){
-                            e.printStackTrace();
-                        }
-                        Log.d("Response", response.toString());
-                    }
-                },
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        System.out.println("found and error");
-                        Log.d("Error.Response", error.toString());
-                    }
+        new GetMethodDemo().execute(CODE_SCHOOL_URL);
+        if (Bootcamps.bootcamps != null){
+            try {
+                JSONObject json = new JSONObject(Bootcamps.bootcamps);
+                for (int i = 0; i < json.getJSONArray("va_approved").length(); i++) {
+                    JSONObject object = (JSONObject) json.getJSONArray("va_approved").get(i);
+                    items.add(object.getString("name"));
+                    items.add(object.getString("url"));
+                    items.add(object.getString("address1"));
+                    items.add(object.getString("city") + ", " + object.getString("state") + " " + object.getString("zip"));
+                    items.add("");
                 }
-        );
-        queue.add(getRequest);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-        //new GetMethodDemo().execute(CODE_SCHOOL_URL);
+        }
     }
 }

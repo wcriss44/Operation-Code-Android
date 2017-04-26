@@ -32,11 +32,10 @@ public class Scholarships extends Fragment {
     private static final OpCodeApi opCodeApi = new OpCodeApi();
 
     // TODO: Rename and change types of parameters
-    RequestQueue queue;
     private String mParam1;
     private String mParam2;
-    ArrayAdapter<String> items;
-    ListView list;
+    private ArrayAdapter<String> items;
+    private ListView list;
 
     private OnFragmentInteractionListener mListener;
 
@@ -79,11 +78,8 @@ public class Scholarships extends Fragment {
         View view = inflater.inflate(R.layout.fragment_scholarships, container, false);
         list = (ListView) view.findViewById(R.id.scholarshipList);
         list.setAdapter(items);
-        queue = Volley.newRequestQueue(this.getActivity());
-
 
         opCodeApi.getScholarships(items);
-        opCodeApi.getBootcamps(items, queue);
         return view;
     }
 

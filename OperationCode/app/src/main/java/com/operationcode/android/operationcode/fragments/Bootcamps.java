@@ -7,8 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
+import com.android.volley.toolbox.Volley;
 import com.operationcode.android.operationcode.R;
+import com.operationcode.android.operationcode.services.OpCodeApi;
+
+import org.json.JSONObject;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,8 +29,12 @@ public class Bootcamps extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final OpCodeApi opCodeApi = new OpCodeApi();
 
     // TODO: Rename and change types of parameters
+    public static String bootcamps = null;
+    private ArrayAdapter<String> items;
+    private ListView list;
     private String mParam1;
     private String mParam2;
 
@@ -55,6 +65,7 @@ public class Bootcamps extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        items = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -65,7 +76,13 @@ public class Bootcamps extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_boot_camps, container, false);
+        View view = inflater.inflate(R.layout.fragment_boot_camps, container, false);
+
+        list = (ListView) view.findViewById(R.id.bootcamps);
+        list.setAdapter(items);
+
+        opCodeApi.getBootcamps(items);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

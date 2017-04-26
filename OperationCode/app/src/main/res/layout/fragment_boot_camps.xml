@@ -5,9 +5,9 @@
     tools:context="com.operationcode.android.operationcode.fragments.Bootcamps">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="hello_bootcamp fragment" />
-
+        android:id="@+id/bootcamps" />
 </FrameLayout>

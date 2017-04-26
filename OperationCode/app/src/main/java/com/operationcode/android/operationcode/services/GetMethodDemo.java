@@ -3,6 +3,8 @@ package com.operationcode.android.operationcode.services;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.operationcode.android.operationcode.fragments.Bootcamps;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -49,7 +51,7 @@ public class GetMethodDemo extends AsyncTask<String , Void ,String> {
         super.onPostExecute(s);
 
         Log.e("Response", "" + server_response);
-
+        Bootcamps.bootcamps = server_response;
 
     }
 

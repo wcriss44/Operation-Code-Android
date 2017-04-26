@@ -16,7 +16,6 @@
             android:title="Scholarships" />
         <item
             android:id="@+id/nav_nearby"
-            android:icon="@drawable/ic_menu_manage"
             android:title="Nearby" />
     </group>
 
